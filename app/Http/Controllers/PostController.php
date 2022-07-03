@@ -33,7 +33,7 @@ class PostController extends Controller
         ]);
 
         // return Inertia::render('Dashboard');
-        return Redirect::route('dashboard');
+        return Redirect::back();
     }
 
     /**
