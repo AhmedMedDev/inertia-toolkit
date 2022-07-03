@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +28,11 @@ Route::get('/', function () {
 Route::inertia('/home', 'Home');
 Route::inertia('/about', 'About');
 
+Route::apiResource('posts', PostController::class);
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard',[
-        'posts' => DB::table('posts')->get()
+        'posts' => DB::table('posts')->paginate(5)
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
