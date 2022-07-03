@@ -20594,7 +20594,7 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var submit = function submit() {
-      form.put(route('posts.update'));
+      form.put(route('posts.update', props.post.id));
     };
 
     var __returned__ = {

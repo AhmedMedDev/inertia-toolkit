@@ -59,7 +59,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('posts')
+            ->whereId($id)
+            ->update([
+                'title' => $request->title,
+                'body' => $request->body,
+            ]);
+
+        return Redirect::route('dashboard');
     }
 
     /**
