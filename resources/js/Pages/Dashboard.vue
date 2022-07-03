@@ -2,7 +2,7 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
-import Pagination  from '@/Components/Pagination';
+import Pagination from '@/Components/Pagination';
 
 const props = defineProps(['posts']);
 
@@ -13,6 +13,9 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('posts.store'));
+};
+const destroy = (id) => {
+    form.delete(route('posts.destroy', id));
 };
 </script>
 
@@ -60,9 +63,19 @@ const submit = () => {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <pagination class="mb-6" :links="props.posts.links" />
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200" v-for="post in props.posts.data">
-                        Title : {{ post.title }} <br>
-                        Body : {{ post.body }}
+                    <div class="p-6 bg-white border-b border-gray-200 d-flex" v-for="post in props.posts.data">
+                        <div class="">
+                            Title : {{ post.title }} <br>
+                            Body : {{ post.body }}
+                        </div>
+                        <div class="">
+                            <button class="mr-2 px-6 py-2 text-white bg-gray-900 rounded ">
+                                Edit
+                            </button>
+                            <button class="px-6 py-2 text-white bg-gray-900 rounded " @click="destroy(post.id)">
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,3 +83,9 @@ const submit = () => {
 
     </BreezeAuthenticatedLayout>
 </template>
+<style>
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+</style>

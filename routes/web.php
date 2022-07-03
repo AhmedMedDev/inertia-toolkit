@@ -32,7 +32,7 @@ Route::apiResource('posts', PostController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard',[
-        'posts' => DB::table('posts')->paginate(5)
+        'posts' => DB::table('posts')->orderByDesc('id')->paginate(5)
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
