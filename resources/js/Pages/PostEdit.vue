@@ -2,21 +2,16 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
-import { Link } from '@inertiajs/inertia-vue3';
-import Pagination from '@/Components/Pagination';
 
-const props = defineProps(['posts']);
+const props = defineProps(['post']);
 
 const form = useForm({
-    title: '',
-    body: '',
+    title: props.post.title,
+    body: props.post.body
 });
 
 const submit = () => {
-    form.post(route('posts.store'));
-};
-const destroy = (id) => {
-    form.delete(route('posts.destroy', id));
+    form.put(route('posts.update'));
 };
 </script>
 
@@ -51,7 +46,7 @@ const destroy = (id) => {
                             <!-- submit -->
                             <div class="flex items-center mt-4">
                                 <button class="px-6 py-2 text-white bg-gray-900 rounded ">
-                                    Save
+                                    Update
                                 </button>
                             </div>
                         </form>
@@ -59,34 +54,5 @@ const destroy = (id) => {
                 </div>
             </div>
         </div>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <pagination class="mb-6" :links="props.posts.links" />
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200 d-flex" v-for="post in props.posts.data">
-                        <div class="">
-                            Title : {{ post.title }} <br>
-                            Body : {{ post.body }}
-                        </div>
-                        <div class="">
-                            <Link class="mr-2 px-6 py-2 text-white bg-gray-900 rounded " :href="route('posts.show', post.id)">
-                                Edit
-                            </Link>
-                            <button class="px-6 py-2 text-white bg-gray-900 rounded " @click="destroy(post.id)">
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </BreezeAuthenticatedLayout>
 </template>
-<style>
-.d-flex {
-    display: flex;
-    justify-content: space-between;
-}
-</style>

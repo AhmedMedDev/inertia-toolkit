@@ -44,7 +44,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('PostEdit',[
+            'post' => DB::table('posts')
+                    ->find($id)
+        ]);
     }
 
     /**
