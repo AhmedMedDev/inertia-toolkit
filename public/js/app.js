@@ -20954,7 +20954,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         'bg-blue-700 text-white': link.active
       }]),
       href: link.url,
-      innerHTML: link.label
+      innerHTML: link.label,
+      "preserve-scroll": ""
     }, null, 8
     /* PROPS */
     , ["class", "href", "innerHTML"]))], 64
