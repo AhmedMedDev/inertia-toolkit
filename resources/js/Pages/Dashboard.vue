@@ -73,9 +73,13 @@ const destroy = (id) => {
                             <Link class="mr-2 px-6 py-2 text-white bg-gray-900 rounded " :href="route('posts.show', post.id)">
                                 Edit
                             </Link>
-                            <button class="px-6 py-2 text-white bg-gray-900 rounded " @click="destroy(post.id)">
+                            <Link class="px-6 py-2 text-white bg-gray-900 rounded " 
+                                as="button" type="button"
+                                :href="route('posts.destroy', post.id)" 
+                                method="delete"
+                                preserve-scroll>
                                 Delete
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
