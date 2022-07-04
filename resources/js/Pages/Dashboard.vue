@@ -14,6 +14,8 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('posts.store'));
+    form.title = null
+    form.body = null
 };
 const destroy = (id) => {
     form.delete(route('posts.destroy', id));

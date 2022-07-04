@@ -3,7 +3,7 @@ import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
 
-const props = defineProps(['post']);
+const props = defineProps(['post','errors']);
 
 const form = useForm({
     title: props.post.title,
@@ -32,12 +32,12 @@ const submit = () => {
                     <div class="p-6 bg-white border-b border-gray-200">
                         <form @submit.prevent="submit">
                             <div>
-                                <label for="title">Title</label>
+                                <label for="title">Title  <span class="txt-red" v-if="errors.title">{{ errors.title }}</span></label>
                                 <input type="text" v-model="form.title"
                                     class=" w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 " />
                             </div>
                             <div class="mt-4">
-                                <label for="title">Description</label>
+                                <label for="title">Description  <span class="txt-red" v-if="errors.body">{{ errors.body }}</span> </label>
                                 <textarea name="description" type="text" v-model="form.body"
                                     class=" w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                                 </textarea>
