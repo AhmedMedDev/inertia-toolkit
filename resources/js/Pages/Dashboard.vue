@@ -5,7 +5,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import { Link } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination';
 
-const props = defineProps(['posts']);
+const props = defineProps(['posts', 'errors']);
 
 const form = useForm({
     title: '',
@@ -37,17 +37,16 @@ const destroy = (id) => {
                     <div class="p-6 bg-white border-b border-gray-200">
                         <form @submit.prevent="submit">
                             <div>
-                                <label for="title">Title</label>
+                                <label for="title">Title  <span class="txt-red" v-if="errors.title">{{ errors.title }}</span></label>
                                 <input type="text" v-model="form.title"
                                     class=" w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 " />
                             </div>
                             <div class="mt-4">
-                                <label for="title">Description</label>
+                                <label for="title">Description  <span class="txt-red" v-if="errors.body">{{ errors.body }}</span> </label>
                                 <textarea name="description" type="text" v-model="form.body"
                                     class=" w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                                 </textarea>
                             </div>
-
                             <!-- submit -->
                             <div class="flex items-center mt-4">
                                 <button class="px-6 py-2 text-white bg-gray-900 rounded ">
@@ -92,5 +91,8 @@ const destroy = (id) => {
 .d-flex {
     display: flex;
     justify-content: space-between;
+}
+.txt-red{
+    color: red;
 }
 </style>
