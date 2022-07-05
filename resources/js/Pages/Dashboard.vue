@@ -6,7 +6,6 @@
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
-                <input type="text" v-model="filters" id="">
             </h2>
         </template>
 
@@ -52,9 +51,21 @@
             </div>
         </div>
 
+
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <pagination class="mb-6" :links="posts.links" />
+                <div class="d-flex align-items">
+                    <div class=" mb-6">
+                        <div class="p-6 overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                            <div class=" bg-white border-b border-gray-200">
+                                <input type="text" v-model="filters"
+                                            class=" w-full  border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 " />
+                            </div>
+                        </div>
+                    </div>
+                    <pagination class="mb-6" :links="posts.links" />
+                </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 d-flex" v-for="post in posts.data">
                         <div class="">
@@ -82,6 +93,9 @@
 .d-flex {
     display: flex;
     justify-content: space-between;
+}
+.align-items{
+    align-items: center;
 }
 
 .txt-red {
@@ -143,6 +157,7 @@ export default {
             Inertia.get('/dashboard', {search: this.filters},{
                 preserveState : true,
                 replace : true,
+                preserveScroll : true
             });
         }, 500)
     }
