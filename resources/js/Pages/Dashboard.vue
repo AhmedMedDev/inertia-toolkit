@@ -89,13 +89,11 @@
 </style>
 
 <script>
-import { methods } from 'vue'
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
 import { Link } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination';
-
 
 export default {
     components: {
