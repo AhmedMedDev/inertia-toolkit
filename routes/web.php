@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PostController;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +32,16 @@ Route::inertia('/about', 'About');
 
 Route::apiResource('posts', PostController::class);
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (Request $request) {
+    $search = $request->input('search');
     return Inertia::render('Dashboard',[
-        'posts' => DB::table('posts')->orderByDesc('id')->paginate(5)
+        'posts' => DB::table('posts')
+            ->when($search, function ($query, $search){
+
+               return $query->where('title', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->paginate(5)
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

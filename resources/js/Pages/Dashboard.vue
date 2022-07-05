@@ -6,6 +6,7 @@
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
+                <input type="text" v-model="filters" id="">
             </h2>
         </template>
 
@@ -94,6 +95,7 @@ import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
 import { Link } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination';
+import { Inertia } from '@inertiajs/inertia';
 
 export default {
     components: {
@@ -113,25 +115,36 @@ export default {
                 title: null,
                 body: null,
             }),
-            processing: false
+            processing: false,
+            filters: null
         }
     },
     methods: {
-        submit () {
-            
-            this.form.post(route('posts.store'),{
-                onStart     : () => this.loaderToggle(),
-                onSuccess   : () => this.form.reset(),
-                onFinish    : () => this.loaderToggle()
+        submit() {
+
+            this.form.post(route('posts.store'), {
+                onStart: () => this.loaderToggle(),
+                onSuccess: () => this.form.reset(),
+                onFinish: () => this.loaderToggle()
             })
         },
-        loaderToggle () {
-            
+        loaderToggle() {
+
             this.processing = !this.processing
         }
     },
     mounted() {
 
+    },
+    watch: {
+
+        filters:  _.debounce(function (newVal) {
+
+            Inertia.get('/dashboard', {search: this.filters},{
+                preserveState : true,
+                replace : true,
+            });
+        }, 500)
     }
 }
 </script>
