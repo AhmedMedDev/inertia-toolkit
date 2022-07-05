@@ -29,10 +29,10 @@
                             </div>
                             <!-- submit -->
                             <div class="flex items-center mt-4">
-                                <button class="mr-2 px-6 py-2 text-white bg-gray-900 rounded ">
+                                <button :disabled="processing" class="mr-2 px-6 py-2 text-white bg-gray-900 rounded ">
                                     Save
                                 </button>
-                                <div v-if="open_loader">
+                                <div v-if="processing">
                                     <svg role="status"
                                         class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                                         viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +113,7 @@ export default {
                 title: null,
                 body: null,
             }),
-            open_loader: false
+            processing: false
         }
     },
     methods: {
@@ -127,7 +127,7 @@ export default {
         },
         loaderToggle () {
             
-            this.open_loader = !this.open_loader
+            this.processing = !this.processing
         }
     },
     mounted() {

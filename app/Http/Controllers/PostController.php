@@ -32,7 +32,6 @@ class PostController extends Controller
 
         DB::table('posts')->insert($request);
 
-        // return Inertia::render('Dashboard');
         return Redirect::back();
     }
 

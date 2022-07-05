@@ -20508,7 +20508,7 @@ __webpack_require__.r(__webpack_exports__);
         title: null,
         body: null
       }),
-      open_loader: false
+      processing: false
     };
   },
   methods: {
@@ -20526,7 +20526,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loaderToggle: function loaderToggle() {
-      this.open_loader = !this.open_loader;
+      this.processing = !this.processing;
     }
   },
   mounted: function mounted() {}
@@ -22063,13 +22063,7 @@ var _hoisted_12 = {
 var _hoisted_13 = {
   "class": "flex items-center mt-4"
 };
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "mr-2 px-6 py-2 text-white bg-gray-900 rounded"
-}, " Save ", -1
-/* HOISTED */
-);
-
+var _hoisted_14 = ["disabled"];
 var _hoisted_15 = {
   key: 0
 };
@@ -22160,7 +22154,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
       }, "\r\n                                ", 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.body]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" submit "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, $data.open_loader ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.body]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" submit "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        disabled: $data.processing,
+        "class": "mr-2 px-6 py-2 text-white bg-gray-900 rounded"
+      }, " Save ", 8
+      /* PROPS */
+      , _hoisted_14), $data.processing ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32
       /* HYDRATE_EVENTS */
       )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
         "class": "mb-6",
