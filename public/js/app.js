@@ -20515,8 +20515,10 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      this.loaderToggle();
       this.form.post(route('posts.store'), {
+        onStart: function onStart() {
+          return _this.loaderToggle();
+        },
         onSuccess: function onSuccess() {
           return _this.form.reset();
         },

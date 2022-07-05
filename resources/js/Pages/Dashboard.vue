@@ -118,11 +118,11 @@ export default {
     },
     methods: {
         submit () {
-
-            this.loaderToggle()
+            
             this.form.post(route('posts.store'),{
-                onSuccess : () => this.form.reset(),
-                onFinish : () => this.loaderToggle()
+                onStart     : () => this.loaderToggle(),
+                onSuccess   : () => this.form.reset(),
+                onFinish    : () => this.loaderToggle()
             })
         },
         loaderToggle () {
