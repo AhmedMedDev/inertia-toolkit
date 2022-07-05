@@ -42,6 +42,7 @@ Route::get('/dashboard', function (Request $request) {
             })
             ->latest()
             ->paginate(5)
+            ->withQueryString()
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
