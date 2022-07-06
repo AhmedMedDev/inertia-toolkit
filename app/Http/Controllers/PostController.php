@@ -32,7 +32,8 @@ class PostController extends Controller
 
         DB::table('posts')->insert($request);
 
-        return Redirect::back();
+        return Redirect::back()
+            ->with('message', 'Post Created Successfilly');
     }
 
     /**
@@ -79,6 +80,7 @@ class PostController extends Controller
             ->whereId($id)
             ->delete();
             
-        return Redirect::back();
+        return Redirect::back()
+            ->with('message', 'Post Deleted Successfilly');
     }
 }
