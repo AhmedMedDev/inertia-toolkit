@@ -34,7 +34,8 @@
                         {{ post.body }}
                     </td>
                     <td class="py-4 px-6">
-                        {{ post.created_at }}
+                        {{ moment(post.created_at).format("MMM Do")}}
+                        
                     </td>
                     <td class="py-4 px-6 text-right">
                         <Link :href="route('posts.show', post.id)" class="font-medium px-6 text-blue-600 dark:text-blue-500 hover:underline" >
@@ -52,6 +53,7 @@
 </template>
 
 <script setup>
+import moment from "moment";
 import { Link } from '@inertiajs/inertia-vue3';
 
 const props = defineProps(['posts']);
