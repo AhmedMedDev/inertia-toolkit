@@ -33,7 +33,8 @@ class PostController extends Controller
         DB::table('posts')->insert($request);
 
         return Redirect::back()
-            ->with('message', 'Post Created Successfilly');
+            ->with('message', 'Post Created Successfilly')
+            ->with('status', 'green');
     }
 
     /**
@@ -65,7 +66,10 @@ class PostController extends Controller
             ->whereId($id)
             ->update($request);
 
-        return Redirect::route('dashboard');
+        return Redirect::route('dashboard')
+            ->with('message', 'Post Updated Successfilly')
+            ->with('status', 'info');
+
     }
 
     /**
@@ -81,6 +85,8 @@ class PostController extends Controller
             ->delete();
             
         return Redirect::back()
-            ->with('message', 'Post Deleted Successfilly');
+            ->with('message', 'Post Deleted Successfilly')
+            ->with('status', 'red');
+
     }
 }
