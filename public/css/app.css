@@ -862,11 +862,20 @@ select {
 .h-56 {
   height: 14rem;
 }
+.h-\[\] {
+  height: ;
+}
+.h-\[100vh\] {
+  height: 100vh;
+}
 .min-h-screen {
   min-height: 100vh;
 }
 .min-h-full {
   min-height: 100%;
+}
+.min-h-\[100vh\] {
+  min-height: 100vh;
 }
 .w-5 {
   width: 1.25rem;

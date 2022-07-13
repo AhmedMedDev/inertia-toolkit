@@ -22757,7 +22757,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "relative bg-white overflow-hidden"
+  "class": "relative bg-white overflow-hidden h-[100vh]"
 };
 var _hoisted_2 = {
   "class": "max-w-7xl mx-auto"
@@ -22767,7 +22767,7 @@ var _hoisted_3 = {
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  "class": "hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2",
+  "class": "min-h-[100vh] hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2",
   fill: "currentColor",
   viewBox: "0 0 100 100",
   preserveAspectRatio: "none",
