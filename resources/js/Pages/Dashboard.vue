@@ -4,34 +4,12 @@
 
     <MasterLayout>
         <template #header>
-            <h2 v-if="$page.props.flash.message">
-                {{ $page.props.flash.message }}
-            </h2>
-            <h2 v-else>
+            <h2>
                 Dashboard
             </h2>
         </template>
 
-        <!-- <div :class="[$page.props.flash.message ? 'active-alert' : '', 'flex items-center p-4 mb-4 w-full max-w-xs text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800']" id="toast-success" role="alert">
-            <div class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            </div>
-            <div class="ml-3 text-sm font-normal">Item moved successfully.</div>
-            <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
-                <span class="sr-only">Close</span>
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </button>
-        </div> -->
-        <div id="toast-success" :class="[$page.props.flash.message ? 'active-alert' : '', 'flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200']" role="alert">
-            <svg class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-            <div class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">
-                A simple info alert with an <a href="#" class="font-semibold underline hover:text-green-800 dark:hover:text-green-900">example link</a>. Give it a click if you like.
-            </div>
-            <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300" data-dismiss-target="#alert-3" aria-label="Close">
-                <span class="sr-only">Close</span>
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </button>
-        </div>
+        <Alerts />
 
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
@@ -104,16 +82,7 @@
 .txt-red {
     color: red;
 }
-#toast-success{
-    position: absolute;
-    bottom: -100px;
-    left: 39%;
-    z-index: 99;
-    transition: .5s ease;
-}
-.active-alert{
-    bottom: 45px !important;
-}
+
 </style>
 
 <script>
@@ -125,17 +94,19 @@ import Pagination from '@/Components/Pagination';
 import { Inertia } from '@inertiajs/inertia';
 import MasterLayout from '@/Layouts/Master.vue';
 import Posts from '@/Components/Post/index.vue';
+import Alerts from '../Components/Alerts.vue';
 
 export default {
     components: {
-        Head,
-        BreezeAuthenticatedLayout,
-        Link,
-        Pagination,
-        useForm,
-        MasterLayout,
-        Posts
-    },
+    Head,
+    BreezeAuthenticatedLayout,
+    Link,
+    Pagination,
+    useForm,
+    MasterLayout,
+    Posts,
+    Alerts
+},
     props: {
         posts: Object,
         errors: Object,
