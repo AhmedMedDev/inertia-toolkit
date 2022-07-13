@@ -23388,7 +23388,7 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
   // Whether to include the default NProgress styles.
   includeCSS: true,
   // Whether the NProgress spinner will be shown.
-  showSpinner: false
+  showSpinner: true
 });
 
 /***/ }),
