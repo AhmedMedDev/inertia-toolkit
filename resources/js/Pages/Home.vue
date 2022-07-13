@@ -7,6 +7,8 @@ import MasterLayout from '@/Layouts/Master.vue';
 <template>
 
     <MasterLayout>
+        <template #header>Dashboard</template>
+
         <div>
             Hello World From Home 👋🏻
         </div>

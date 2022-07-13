@@ -34,6 +34,9 @@
                     <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
                       <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
                     </MenuItem>
+                      <Link :href="route('logout')" method="post" as="button" class="block px-4 py-2 text-sm text-gray-700">
+                        Sign out
+                    </Link>
                   </MenuItems>
                 </transition>
               </Menu>
@@ -77,7 +80,9 @@
 
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <h1 class="text-3xl font-bold text-gray-900">
+            <slot name="header" />
+        </h1>
       </div>
     </header>
     <main>
@@ -110,6 +115,5 @@ const navigation = [
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
 ]
 </script>

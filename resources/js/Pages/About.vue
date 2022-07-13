@@ -6,6 +6,8 @@ import MasterLayout from '@/Layouts/Master.vue';
 
 <template>
     <MasterLayout>
+        <template #header>About</template>
+
         <div>
             Hello World From About 👋🏻
         </div>
