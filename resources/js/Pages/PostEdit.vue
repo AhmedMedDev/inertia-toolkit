@@ -2,6 +2,7 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import { useForm } from "@inertiajs/inertia-vue3";
+import MasterLayout from '@/Layouts/Master.vue';
 
 const props = defineProps(['post','errors']);
 
@@ -19,7 +20,7 @@ const submit = () => {
 
     <Head title="Dashboard" />
 
-    <BreezeAuthenticatedLayout>
+    <MasterLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
@@ -54,5 +55,5 @@ const submit = () => {
                 </div>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+    </MasterLayout>
 </template>

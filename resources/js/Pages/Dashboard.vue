@@ -2,17 +2,16 @@
 
     <Head title="Dashboard" />
 
-    <BreezeAuthenticatedLayout>
+    <MasterLayout>
         <template #header>
             <h2 v-if="$page.props.flash.message" >
                  {{ $page.props.flash.message }}
             </h2>
-            <h2 v-else class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 v-else>
                 Dashboard
             </h2>
         </template>
 
-        <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
@@ -52,7 +51,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -88,7 +86,7 @@
             </div>
         </div>
 
-    </BreezeAuthenticatedLayout>
+    </MasterLayout>
 </template>
 <style>
 .d-flex {
@@ -111,15 +109,17 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import { Link } from '@inertiajs/inertia-vue3';
 import Pagination from '@/Components/Pagination';
 import { Inertia } from '@inertiajs/inertia';
+import MasterLayout from '@/Layouts/Master.vue';
 
 export default {
     components: {
-        Head,
-        BreezeAuthenticatedLayout,
-        Link,
-        Pagination,
-        useForm
-    },
+    Head,
+    BreezeAuthenticatedLayout,
+    Link,
+    Pagination,
+    useForm,
+    MasterLayout
+},
     props: {
         posts: Object,
         errors: Object,
