@@ -14,10 +14,11 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .postCss('resources/css/app.css', 'public/css', [require('tailwindcss'), require('autoprefixer')])
+    .sass('resources/css/bootstrap.scss', 'public/css')
     .alias({
         '@': 'resources/js',
     });
-
+mix.disableNotifications();
 if (mix.inProduction()) {
     mix.version();
 }
