@@ -20671,19 +20671,43 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       latestPosts: [{
-        "id": 1,
-        "userThum": "https://social.webestica.com/assets/images/avatar/04.jpg",
-        "userName": "Lorem ipsum dolor",
-        "postTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis temporibus",
-        "postImage": "https://social.webestica.com/assets/images/post/3by2/01.jpg"
-      }, {
         "id": 2,
         "userThum": "https://social.webestica.com/assets/images/avatar/04.jpg",
         "userName": "Lorem ipsum dolor",
         "postTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis temporibus",
         "postImage": "https://social.webestica.com/assets/images/post/3by2/01.jpg"
-      }]
+      }, {
+        "id": 1,
+        "userThum": "https://social.webestica.com/assets/images/avatar/04.jpg",
+        "userName": "Lorem ipsum dolor",
+        "postTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis temporibus",
+        "postImage": "https://social.webestica.com/assets/images/post/3by2/01.jpg"
+      }],
+      loadingPosts: false
     };
+  },
+  methods: {
+    getNextPosts: function getNextPosts() {
+      var _this = this;
+
+      // push new posts in latestPosts
+      this.loadingPosts = true;
+      setTimeout(function () {
+        _this.loadingPosts = false;
+
+        _this.latestPosts.push({});
+
+        _this.latestPosts.push({});
+      }, 1500);
+    },
+    handleScroll: function handleScroll(event) {
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+        this.getNextPosts();
+      }
+    }
+  },
+  created: function created() {
+    window.addEventListener('scroll', this.handleScroll);
   }
 });
 
@@ -23047,6 +23071,10 @@ var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
+var _hoisted_11 = {
+  key: 0,
+  "class": "loading text-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
@@ -23145,7 +23173,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })]), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))];
+      )), $data.loadingPosts ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, " loading . . . ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */
