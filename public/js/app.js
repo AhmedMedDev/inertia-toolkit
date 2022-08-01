@@ -20696,8 +20696,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.loadingPosts = false;
 
         _this.latestPosts.push({});
-
-        _this.latestPosts.push({});
       }, 1500);
     },
     handleScroll: function handleScroll(event) {

@@ -93,7 +93,6 @@ export default {
             setTimeout(()=>{
                 this.loadingPosts = false
                 this.latestPosts.push({})
-                this.latestPosts.push({})
             }, 1500)
 
         },
