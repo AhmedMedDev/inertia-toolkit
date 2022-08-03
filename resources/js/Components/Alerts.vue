@@ -31,8 +31,15 @@
     </div>
 </template>
 
-<script setup>
-
+<script>
+export default {
+    updated () {
+        if (this.$page.props.flash.message != null) 
+            setTimeout(()=>{
+                this.$page.props.flash.message = null
+            }, 2000)
+    },
+}
 </script>
 
 <style>

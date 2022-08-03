@@ -36,7 +36,7 @@
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis temporibus</p>
             </div>
             <div class="postImage">
-                <img src="https://social.webestica.com/assets/images/post/3by2/01.jpg" alt="">
+                <img :src="asset('assets/01.jpg')" alt="">
             </div>
             <div class="actions flex items-cente">
                 <a class="mr-3" href="">Like 👍</a>
@@ -101,7 +101,13 @@ export default {
                 
                 this.getNextPosts()
             }
-        }
+        },
+   
+    },
+    computed: {
+        asset () {
+            return (path) => `http://127.0.0.1:8000/${path}`
+        },
     },
     created () {
         window.addEventListener('scroll', this.handleScroll);
