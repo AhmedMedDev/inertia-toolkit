@@ -20727,6 +20727,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
+  computed: {
+    asset: function asset() {
+      return function (path) {
+        return "http://127.0.0.1:8000/".concat(path);
+      };
+    }
+  },
   created: function created() {
     window.addEventListener('scroll', this.handleScroll);
   }
@@ -23068,18 +23075,12 @@ var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "postImage"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: "https://social.webestica.com/assets/images/post/3by2/01.jpg",
-    alt: ""
-  })], -1
-  /* HOISTED */
-  );
-});
+var _hoisted_9 = {
+  "class": "postImage"
+};
+var _hoisted_10 = ["src"];
 
-var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "actions flex items-cente"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -23092,7 +23093,7 @@ var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_11 = {
+var _hoisted_12 = {
   key: 0,
   "class": "loading text-center"
 };
@@ -23191,10 +23192,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _: 1
           /* STABLE */
 
-        })]), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10]);
+        })]), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+          src: $options.asset('assets/01.jpg'),
+          alt: ""
+        }, null, 8
+        /* PROPS */
+        , _hoisted_10)]), _hoisted_11]);
       }), 128
       /* KEYED_FRAGMENT */
-      )), $data.loadingPosts ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, " loading . . . ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+      )), $data.loadingPosts ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, " loading . . . ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */
