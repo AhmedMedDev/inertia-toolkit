@@ -78,7 +78,7 @@ export default {
                 {
                     "id" : 1,
                     "userThum" : "https://social.webestica.com/assets/images/avatar/04.jpg",
-                    "userName" : "Lorem ipsum dolor",
+                    "userName" : "Lorem ipsum dolor Ahmed",
                     "postTitle" : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis temporibus",
                     "postImage" : "https://social.webestica.com/assets/images/post/3by2/01.jpg",
                 }
@@ -108,6 +108,21 @@ export default {
         asset () {
             return (path) => `http://127.0.0.1:8000/${path}`
         },
+        allTitles () {
+            return this.latestPosts.map((post) => post.postTitle).reduce((a, b) => `${a} ${b} `)
+        },
+        postsFiltered () {
+            return this.latestPosts.filter((row) => row.id = 2)
+        },
+        usernameFilterd () {
+            return this.latestPosts.filter((row) => row.userName.includes('Ahmed'))
+        },
+        assetsAdded () {
+            return this.latestPosts.map((row) => {
+                row.assetPath = "http:://localhost:8000"
+                return row
+            })
+        }
     },
     created () {
         window.addEventListener('scroll', this.handleScroll);

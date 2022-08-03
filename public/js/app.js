@@ -20702,7 +20702,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         "id": 1,
         "userThum": "https://social.webestica.com/assets/images/avatar/04.jpg",
-        "userName": "Lorem ipsum dolor",
+        "userName": "Lorem ipsum dolor Ahmed",
         "postTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis temporibus",
         "postImage": "https://social.webestica.com/assets/images/post/3by2/01.jpg"
       }],
@@ -20732,6 +20732,29 @@ __webpack_require__.r(__webpack_exports__);
       return function (path) {
         return "http://127.0.0.1:8000/".concat(path);
       };
+    },
+    allTitles: function allTitles() {
+      return this.latestPosts.map(function (post) {
+        return post.postTitle;
+      }).reduce(function (a, b) {
+        return "".concat(a, " ").concat(b, " ");
+      });
+    },
+    postsFiltered: function postsFiltered() {
+      return this.latestPosts.filter(function (row) {
+        return row.id = 2;
+      });
+    },
+    usernameFilterd: function usernameFilterd() {
+      return this.latestPosts.filter(function (row) {
+        return row.userName.includes('Ahmed');
+      });
+    },
+    assetsAdded: function assetsAdded() {
+      return this.latestPosts.map(function (row) {
+        row.assetPath = "http:://localhost:8000";
+        return row;
+      });
     }
   },
   created: function created() {
