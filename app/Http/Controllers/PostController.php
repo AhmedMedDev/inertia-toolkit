@@ -17,7 +17,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'success' => true,
+            'payload' => DB::table('posts')
+                        ->latest()
+                        ->paginate(5)
+        ]);
     }
 
     /**

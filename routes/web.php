@@ -30,7 +30,7 @@ Route::get('/', function () {
 Route::inertia('/home', 'Home');
 Route::inertia('/about', 'About');
 
-Route::apiResource('posts', PostController::class);
+Route::apiResource('posts', PostController::class)->middleware('auth');
 
 Route::get('/dashboard', function (Request $request) {
     $search = $request->input('search');

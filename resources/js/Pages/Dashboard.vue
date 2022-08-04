@@ -95,7 +95,7 @@ import { Inertia } from '@inertiajs/inertia';
 import MasterLayout from '@/Layouts/Master.vue';
 import Posts from '@/Components/Post/index.vue';
 import Alerts from '../Components/Alerts.vue';
-
+import { mapState }  from 'vuex'
 export default {
     components: {
     Head,
@@ -105,7 +105,8 @@ export default {
     useForm,
     MasterLayout,
     Posts,
-    Alerts
+    Alerts,
+    mapState
 },
     props: {
         posts: Object,
@@ -135,8 +136,12 @@ export default {
             this.processing = !this.processing
         }
     },
+    computed: {
+        // ...mapState['posts']
+    },
     mounted() {
-
+        // this.$store.commit('set_csrf', this.$page.props.csrf_token)
+        // this.$store.dispatch('fetchPosts');
     },
     watch: {
 
