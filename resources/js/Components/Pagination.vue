@@ -1,15 +1,7 @@
-<script setup>
-import { Link } from '@inertiajs/inertia-vue3';
-
-defineProps({
-    links: Array,
-});
-
-</script>
 <template>
-    <div v-if="links.length > 3">
+    <!-- <div v-if="this.$store.state.posts.links.length > 3"> -->
         <div class="flex flex-wrap -mb-1">
-            <template v-for="(link, p) in links" :key="p">
+            <template v-for="(link, p) in this.$store.state.posts.links" :key="p">
                 <div v-if="link.url === null" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded"
                     v-html="link.label" />
                 <Link v-else
@@ -19,5 +11,20 @@ defineProps({
                 </Link>
         </template>
         </div>
-    </div>
+    <!-- </div> -->
 </template>
+<script>
+import { Link } from '@inertiajs/inertia-vue3';
+
+export default {
+    components: {
+        Link,
+    },
+    props: {
+        // links: Array,
+    },
+    created () {
+        // console.log(links);
+    },
+}
+</script>

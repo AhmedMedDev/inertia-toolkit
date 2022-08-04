@@ -60,9 +60,9 @@
                             placeholder="Quick Search"
                             class=" w-full border-[#e3d7d7] text-gray-400 border-white-400 rounded focus:outline-none  " />
                     </div>
-                    <pagination class="mb-6" :links="posts.links" />
+                    <pagination class="mb-6" />
                 </div>
-                <Posts :posts="posts.data" />
+                <Posts :posts="this.$store.state.posts.data" />
             </div>
         </div>
 
@@ -95,7 +95,7 @@ import { Inertia } from '@inertiajs/inertia';
 import MasterLayout from '@/Layouts/Master.vue';
 import Posts from '@/Components/Post/index.vue';
 import Alerts from '../Components/Alerts.vue';
-
+import { mapState }  from 'vuex'
 export default {
     components: {
     Head,
@@ -105,10 +105,10 @@ export default {
     useForm,
     MasterLayout,
     Posts,
-    Alerts
+    Alerts,
+    mapState
 },
     props: {
-        posts: Object,
         errors: Object,
     },
     data() {
@@ -135,8 +135,12 @@ export default {
             this.processing = !this.processing
         }
     },
+    computed: {
+        // ...mapState['posts']
+    },
     mounted() {
-
+        this.$store.commit('set_csrf', this.$page.props.csrf_token)
+        this.$store.dispatch('fetchPosts');
     },
     watch: {
 
