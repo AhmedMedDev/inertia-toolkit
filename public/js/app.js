@@ -21592,8 +21592,9 @@ var _hoisted_1 = {
   "class": "flex flex-wrap -mb-1"
 };
 var _hoisted_2 = ["innerHTML"];
+var _hoisted_3 = ["onClick", "innerHTML"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
+  var _this = this;
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"this.$store.state.posts.links.length > 3\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.$store.state.posts.links, function (link, p) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -21604,18 +21605,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       innerHTML: link.label
     }, null, 8
     /* PROPS */
-    , _hoisted_2)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+    , _hoisted_2)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: 1,
+      onClick: function onClick($event) {
+        return _this.$store.dispatch('fetchPosts', link.url);
+      },
       "preserve-state": "",
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500", {
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500", {
         'bg-blue-700 text-white': link.active
       }]),
-      href: link.url,
       innerHTML: link.label,
       "preserve-scroll": ""
-    }, null, 8
-    /* PROPS */
-    , ["class", "href", "innerHTML"]))], 64
+    }, null, 10
+    /* CLASS, PROPS */
+    , _hoisted_3))], 64
     /* STABLE_FRAGMENT */
     );
   }), 128
@@ -23875,7 +23878,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__.createStore({
   },
   actions: {
     fetchPosts: function fetchPosts(state) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/posts').then(function (res) {
+      var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'http://127.0.0.1:8000/posts?page=1';
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(url)).then(function (res) {
         return state.commit('set_posts', res.data.payload);
       })["catch"](function (err) {
         return console.log(err);

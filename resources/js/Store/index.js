@@ -17,9 +17,9 @@ const store = new createStore({
         }
     },
     actions: {
-        fetchPosts (state) {
+        fetchPosts (state, url = 'http://127.0.0.1:8000/posts?page=1') {
             
-            axios.get('/posts')
+            axios.get(`${url}`)
             .then((res) => state.commit('set_posts', res.data.payload))
             .catch((err) => console.log(err))
         }
